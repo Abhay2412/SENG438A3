@@ -6,7 +6,7 @@
 | -------------- | --- |
 | Student Names: |     |
 |                |     |
-|                |     |
+|                | Abhay Khosla |
 |                |     |
 
 (Note that some labs require individual reports while others require one report
@@ -14,7 +14,7 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…
+The main objective of this lab is to introduce the concepts of white box testing using the framework JUnit and using coverage tools that help us create a solid test coverage for our test suite. Also, it verifies our unit tests mostly at the unit testing level. The coverage tools used in the lab also help us in identifying how much of the unit testing has been completed with our tests created and how much is left. White box testing enables you to go through the testing phase of a software development cycle more thoroughly with this strategy you are testing for all possible code paths. 
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
