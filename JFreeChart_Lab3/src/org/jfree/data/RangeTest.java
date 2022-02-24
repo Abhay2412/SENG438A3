@@ -737,6 +737,76 @@ public class RangeTest {
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
+	
+	/**
+	 * This test will be testing the intersects function. We will be testing a range and a set of points
+	 * that should intersect with each other, where b1 is greater than the second parameter of the test Range object
+	 */
+	@Test
+	public void intersectsRangeIsTrue_SecondParamGreater() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double lowerBound = 1;
+		double upperBound = 7;
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (1, 7)
+		assertTrue("The expected output should be true", testBool);
+		// assertion that expected value matches the actual value (true)
+	}
+	
+	/**
+	 * This test will be testing the intersects function. We will be testing a range and a set of points
+	 * that should not intersect with each other, where both of the test values are lower than the range object
+	 */
+	@Test
+	public void intersectsRangeIsFalse_BothParamLess() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double lowerBound = 0;
+		double upperBound = 1;
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (0, 1)
+		assertFalse("The expected output should be false", testBool);
+		// assertion that expected value matches the actual value (false)
+	}
+	
+	/**
+	 * This test will be testing the intersects function. We will be testing a range and a set of points
+	 * that should intersect with each other.
+	 */
+	@Test
+	public void intersectsRangeIsTrue_BothParamInsideRange() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double lowerBound = 3;
+		double upperBound = 3;
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (3, 3)
+		assertTrue("The expected output should be true", testBool);
+		// assertion that expected value matches the actual value (true)
+	}
+	
+	/**
+	 * This test will be testing the intersects function. We will be testing a range and a set of points
+	 * that should not intersect with each other.
+	 */
+	@Test
+	public void intersectsRangeIsFalse_BothParamGreater() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double lowerBound = 7;
+		double upperBound = 10;
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (7, 10)
+		assertFalse("The expected output should be false", testBool);
+		// assertion that expected value matches the actual value (false)
+	}
+	/**
+	 * This test will be testing the intersects function. We will be testing a range and a set of points
+	 * that should not intersect with each other.
+	 */
+	@Test
+	public void intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double lowerBound = 5;
+		double upperBound = 4;
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (5, 4)
+		assertFalse("The expected output should be false", testBool);
+		// assertion that expected value matches the actual value (false)
+	}
+	
 	// -----------------------------------------------------------------------------------------
 	// End of code by Alexis and Rachel
 	// -----------------------------------------------------------------------------------------
