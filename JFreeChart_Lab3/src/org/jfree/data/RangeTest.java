@@ -699,7 +699,7 @@ public class RangeTest {
 			testRange1 = new Range(6, 2);
 		} catch (Exception e) {
 			fail("An illegal argument exception was caught when testing if the lower bound is greater than the upper bound");
-		}
+		}//the test should throw an IllegalArgumentException because the lower bound should be on the left hand side of the argument.
 	}
 	
 	/**
