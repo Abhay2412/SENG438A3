@@ -687,7 +687,6 @@ public class RangeTest {
 	// -----------------------------------------------------------------------------------------
 	// Code written by Alexis and Rachel
 	// -----------------------------------------------------------------------------------------
-	/* Alexis codes and Rachel reviews */
 
 	/**
 	 * This test will try to create a Range object where the lower bound is greater
