@@ -220,43 +220,6 @@ public class DataUtilitiesTest {
 			// catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
-	
-	//===============================================Written by Lauraine====================================================================
-	@Test
-	public void calculateRowTotalNullData() {
-		Mockery mockingContext = new Mockery();
-		// creating a new mock object called mockingContext
-		final Values2D values = mockingContext.mock(Values2D.class);
-		// mock object (mockingContext) is stored in the local variable 'values'
-		// 'values' is final so it can be referred to from within expectation blocks
-
-		mockingContext.checking(new Expectations() {
-			// a mock expectation block containing expectations of value
-			{
-				one(values).getColumnCount();
-				// invocation of getColumnCount() is expected once
-				will(returnValue(2));
-				// will always returns 2 when getColumnCount() is called
-
-				one(values).getValue(1, 0);
-				// invocation of getValue(1, 0) is expected once
-				will(returnValue(null));
-				// will always returns null when getValue(1, 0) is called
-
-				one(values).getValue(1, 1);
-				// invocation of getValue(1, 1) is expected once
-				will(returnValue(3.5));
-				// will always returns 3.5 when getValue(1, 0) is called
-			}
-		});
-		int rowNumber = 1; // setting rowNumber to have an int value of 1
-		double result = DataUtilities.calculateRowTotal(values, rowNumber);
-		// calling calculateRowTotal with Values2D = values and at rowNumber 1
-		assertEquals("The row total is adding up to 3.5", 3.5, result, .000000001d);
-		// asserting the result adds up to 3.5
-	}
-//================================================================Written by Lauraine===================================================
-
 
 	/**
 	 * This test will simulate creating a Values2D table with positive values. The
@@ -641,43 +604,6 @@ public class DataUtilitiesTest {
 			// catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
-	
-// ===========================================================Written by Lauraine========================================================
-	@Test
-	public void calculateColumnTotalNullData() {
-		Mockery mockingContext = new Mockery();
-		// creating a new mock object called mockingContext
-		final Values2D values = mockingContext.mock(Values2D.class);
-		// mock object (mockingContext) is stored in the local variable 'values'
-		// 'values' is final so it can be referred to from within expectation blocks
-
-		mockingContext.checking(new Expectations() {
-			// a mock expectation block containing expectations of value
-			{
-				one(values).getRowCount();
-				// invocation of getColumnCount() is expected once
-				will(returnValue(2));
-				// will always returns 2 when getColumnCount() is called
-
-				one(values).getValue(0, 1);
-				// invocation of getValue(0, 1) is expected once
-				will(returnValue(-25.98));
-				// will always returns -25.98 when getValue(1, 1) is called
-
-				one(values).getValue(1, 1);
-				// invocation of getValue(1, 1) is expected once
-				will(returnValue(null));
-				// will always returns null when getValue(0, 1) is called
-			}
-		});
-		int columnNumber = 1; // setting columnNumber to have an int value of 1
-		double result = DataUtilities.calculateColumnTotal(values, columnNumber);
-		// calling calculateColumnTotal with Values2D = values and at columnNumber 1
-		assertEquals("The column total is adding up to -25.98", -25.98, result, .000000001d);
-		// asserting the result adds up to -25.98
-	}
-// ==================================================================Written by Lauraine=================================================
-
 
 	/**
 	 * This test will simulate creating a Values2D table with positive values. The
@@ -789,20 +715,6 @@ public class DataUtilitiesTest {
 
 		assertEquals("The equality should be true", false, equality);
 	}
-	
-//=======================================================Written by Lauraine=====================================================================
-	@Test
-	public void testEqualityOfArrays_DifferentArrayLength() {
-		// set up 2 arrays of different length
-		double[][] array1 = { { 4, -19.23, 20, 4, 17.2233, 10, 8, 6.00, 30, 1.11 } };
-		double[][] array2 = { { 4, -19.23, 20, 4 }, { 4.1, -19, 20.44, 4, 17.1234 } };
-
-		boolean equality = DataUtilities.equal(array1, array2);
-
-		assertEquals("The equality should be true", false, equality);
-	}
-//========================================================Written by Lauraine====================================================================
-
 
 	/**
 	 * This test will check the equals() function to see if a null and double array
@@ -861,22 +773,114 @@ public class DataUtilitiesTest {
 	//------------- getCumulativePercentages(KeyedValues data) Tests -----------
 	
 	@Test
-	public void cumulativePercentageForIndexZeroFour() {
+	public void cumulativePercentageForIndexZeroSixteenPercent() {
 		Mockery mockingContext = new Mockery();
 		final KeyedValues data = mockingContext.mock(KeyedValues.class);
 		
 		mockingContext.checking(new Expectations() {{
 			atLeast(1).of(data).getItemCount();
 			will(returnValue(2));
+			
 			atLeast(1).of(data).getValue(0);
 			will(returnValue(1));
-			atLeast(1).of(data).getValue(0);
+			
+			atLeast(1).of(data).getValue(1);
+			will(returnValue(5));
+			
+			atLeast(1).of(data).getKey(0);
 			will(returnValue(25));
 			
+			atLeast(1).of(data).getKey(1);
+			will(returnValue(33));
+			
 		}});
+		//First adds 1 + 5 together all of the values and then it takes the key 
+		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
+		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
+		assertEquals("The value at the key of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+	}
+	
+	
+	/* Lauraine codes and Abhay Reviews */
+	@Test
+	public void testEqualityOfArrays_DifferentArrayLength() {
+		// set up 2 arrays of different length
+		double[][] array1 = { { 4, -19.23, 20, 4, 17.2233, 10, 8, 6.00, 30, 1.11 } };
+		double[][] array2 = { { 4, -19.23, 20, 4 }, { 4.1, -19, 20.44, 4, 17.1234 } };
+
+		boolean equality = DataUtilities.equal(array1, array2);
+
+		assertEquals("The equality should be true", false, equality);
+	}
+	
+	
+	@Test
+	public void calculateColumnTotalNullData() {
+		Mockery mockingContext = new Mockery();
+		// creating a new mock object called mockingContext
+		final Values2D values = mockingContext.mock(Values2D.class);
+		// mock object (mockingContext) is stored in the local variable 'values'
+		// 'values' is final so it can be referred to from within expectation blocks
+
+		mockingContext.checking(new Expectations() {
+			// a mock expectation block containing expectations of value
+			{
+				one(values).getRowCount();
+				// invocation of getColumnCount() is expected once
+				will(returnValue(2));
+				// will always returns 2 when getColumnCount() is called
+
+				one(values).getValue(0, 1);
+				// invocation of getValue(0, 1) is expected once
+				will(returnValue(-25.98));
+				// will always returns -25.98 when getValue(1, 1) is called
+
+				one(values).getValue(1, 1);
+				// invocation of getValue(1, 1) is expected once
+				will(returnValue(null));
+				// will always returns null when getValue(0, 1) is called
+			}
+		});
+		int columnNumber = 1; // setting columnNumber to have an int value of 1
+		double result = DataUtilities.calculateColumnTotal(values, columnNumber);
+		// calling calculateColumnTotal with Values2D = values and at columnNumber 1
+		assertEquals("The column total is adding up to -25.98", -25.98, result, .000000001d);
+		// asserting the result adds up to -25.98
+	}
+	
+	@Test
+	public void calculateRowTotalNullData() {
+		Mockery mockingContext = new Mockery();
+		// creating a new mock object called mockingContext
+		final Values2D values = mockingContext.mock(Values2D.class);
+		// mock object (mockingContext) is stored in the local variable 'values'
+		// 'values' is final so it can be referred to from within expectation blocks
+
+		mockingContext.checking(new Expectations() {
+			// a mock expectation block containing expectations of value
+			{
+				one(values).getColumnCount();
+				// invocation of getColumnCount() is expected once
+				will(returnValue(2));
+				// will always returns 2 when getColumnCount() is called
+
+				one(values).getValue(1, 0);
+				// invocation of getValue(1, 0) is expected once
+				will(returnValue(null));
+				// will always returns null when getValue(1, 0) is called
+
+				one(values).getValue(1, 1);
+				// invocation of getValue(1, 1) is expected once
+				will(returnValue(3.5));
+				// will always returns 3.5 when getValue(1, 0) is called
+			}
+		});
+		int rowNumber = 1; // setting rowNumber to have an int value of 1
+		double result = DataUtilities.calculateRowTotal(values, rowNumber);
 		// calling calculateRowTotal with Values2D = values and at rowNumber 1
-		assertEquals("The value at the key of 0 is 0.4", 0.4, result.getValue(0).doubleValue(), .000000001d);
+		assertEquals("The row total is adding up to 3.5", 3.5, result, .000000001d);
+		// asserting the result adds up to 3.5
 	}
 	
 	// -----------------------------------------------------------------------------------------
