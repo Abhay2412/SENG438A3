@@ -766,6 +766,32 @@ public class DataUtilitiesTest {
 	// -----------------------------------------------------------------------------------------
 
 	// -----------------------------------------------------------------------------------------
+	// CODE CREATED BY ABHAY AND LAURAINE
+	// -----------------------------------------------------------------------------------------
+	/* Abhay codes and Lauraine Reviews */
+
+	//------------- getCumulativePercentages(KeyedValues data) Tests -----------
+	
+	@Test
+	public void cumulativePercentageForIndexZeroFour() {
+		Mockery mockingContext = new Mockery();
+		final KeyedValues data = mockingContext.mock(KeyedValues.class);
+		
+		mockingContext.checking(new Expectations() {{
+			atLeast(1).of(data).getItemCount();
+			will(returnValue(2));
+			atLeast(1).of(data).getValue(0);
+			will(returnValue(1));
+			atLeast(1).of(data).getValue(0);
+			will(returnValue(25));
+			
+		}});
+		KeyedValues result = DataUtilities.getCumulativePercentages(data);
+		// calling calculateRowTotal with Values2D = values and at rowNumber 1
+		assertEquals("The value at the key of 0 is 0.4", 0.4, result.getValue(0).doubleValue(), .000000001d);
+	}
+	
+	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
 	@After
