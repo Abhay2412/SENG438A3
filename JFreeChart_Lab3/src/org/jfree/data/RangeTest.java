@@ -699,114 +699,171 @@ public class RangeTest {
 			testRange1 = new Range(6, 2);
 		} catch (Exception e) {
 			fail("An illegal argument exception was caught when testing if the lower bound is greater than the upper bound");
-		}//the test should throw an IllegalArgumentException because the lower bound should be on the left hand side of the argument.
+		} // the test should throw an IllegalArgumentException because the lower bound
+			// should be on the left hand side of the argument.
 	}
-	
+
 	/**
 	 * This test will be testing the contains function. We will be using a value
 	 * within the range for this test.
 	 */
 	@Test
-	public void containsValueWithinRange() { 
+	public void containsValueWithinRange() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		boolean testBool = testRange1.contains(3); // Seeing if range (2, 6) contains the value 3
 		assertTrue("The expected output should be true", testBool);
 		// assertion that expected value matches the actual value (true)
 	}
-	
+
 	/**
 	 * This test will be testing the contains function. We will be using a value
 	 * outside the lower range for this test.
 	 */
 	@Test
-	public void containsValueOutsideRangeLower() { 
+	public void containsValueOutsideRangeLower() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		boolean testBool = testRange1.contains(0); // Seeing if range (2, 6) contains the value 0
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
-	
+
 	/**
 	 * This test will be testing the contains function. We will be using a value
 	 * outside the upper range for this test.
 	 */
 	@Test
-	public void containsValueOutsideRangeHigher() { 
+	public void containsValueOutsideRangeHigher() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		boolean testBool = testRange1.contains(8); // Seeing if range (2, 6) contains the value 8
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
-	
+
 	/**
-	 * This test will be testing the intersects function. We will be testing a range and a set of points
-	 * that should intersect with each other, where b1 is greater than the second parameter of the test Range object
+	 * This test will be testing the intersects function. We will be testing a range
+	 * and a set of points that should intersect with each other, where b1 is
+	 * greater than the second parameter of the test Range object
 	 */
 	@Test
-	public void intersectsRangeIsTrue_SecondParamGreater() { 
+	public void intersectsRangeIsTrue_SecondParamGreater() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		double lowerBound = 1;
 		double upperBound = 7;
-		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (1, 7)
+		Range testRange2 = new Range(lowerBound, upperBound);
+		boolean testBool = testRange1.intersects(testRange2); // Seeing if range (2, 6) intersects with (1, 7)
 		assertTrue("The expected output should be true", testBool);
 		// assertion that expected value matches the actual value (true)
 	}
-	
+
 	/**
-	 * This test will be testing the intersects function. We will be testing a range and a set of points
-	 * that should not intersect with each other, where both of the test values are lower than the range object
+	 * This test will be testing the intersects function. We will be testing a range
+	 * and a set of points that should not intersect with each other, where both of
+	 * the test values are lower than the range object
 	 */
 	@Test
-	public void intersectsRangeIsFalse_BothParamLess() { 
+	public void intersectsRangeIsFalse_BothParamLess() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		double lowerBound = 0;
 		double upperBound = 1;
-		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (0, 1)
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (0,
+																			// 1)
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
-	
+
 	/**
-	 * This test will be testing the intersects function. We will be testing a range and a set of points
-	 * that should intersect with each other.
+	 * This test will be testing the intersects function. We will be testing a range
+	 * and a set of points that should intersect with each other.
 	 */
 	@Test
-	public void intersectsRangeIsTrue_BothParamInsideRange() { 
+	public void intersectsRangeIsTrue_BothParamInsideRange() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		double lowerBound = 3;
 		double upperBound = 3;
-		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (3, 3)
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (3,
+																			// 3)
 		assertTrue("The expected output should be true", testBool);
 		// assertion that expected value matches the actual value (true)
 	}
-	
+
 	/**
-	 * This test will be testing the intersects function. We will be testing a range and a set of points
-	 * that should not intersect with each other.
+	 * This test will be testing the intersects function. We will be testing a range
+	 * and a set of points that should not intersect with each other.
 	 */
 	@Test
-	public void intersectsRangeIsFalse_BothParamGreater() { 
+	public void intersectsRangeIsFalse_BothParamGreater() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		double lowerBound = 7;
 		double upperBound = 10;
-		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (7, 10)
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (7,
+																			// 10)
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
+
 	/**
-	 * This test will be testing the intersects function. We will be testing a range and a set of points
-	 * that should not intersect with each other.
+	 * This test will be testing the intersects function. We will be testing a range
+	 * and a set of points that should not intersect with each other.
 	 */
 	@Test
-	public void intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() { 
+	public void intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
 		double lowerBound = 5;
 		double upperBound = 4;
-		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (5, 4)
+		boolean testBool = testRange1.intersects(lowerBound, upperBound); // Seeing if range (2, 6) intersects with (5,
+																			// 4)
 		assertFalse("The expected output should be false", testBool);
 		// assertion that expected value matches the actual value (false)
 	}
+
+	/**
+	 * This test will be testing the constrain function. We will be testing a value
+	 * within the range.
+	 */
+	@Test
+	public void constrainWithinRange() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double returnVal = testRange1.constrain(4); // Seeing if range (2, 6) has a constrained value with 4
+		assertEquals("The value returned should be 4", 4, returnVal, .000000001d);
+		// assertion that expected value matches the actual value (4)
+	}
+
+	/**
+	 * This test will be testing the constrain function. We will be testing a value
+	 * greater than the upper range.
+	 */
+	@Test
+	public void constrainOutsideUpperRange() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double returnVal = testRange1.constrain(10); // Seeing if range (2, 6) has a constrained value with 10
+		assertEquals("The value returned should be 6", 6, returnVal, .000000001d);
+		// assertion that expected value matches the actual value (6)
+	}
 	
+	/**
+	 * This test will be testing the constrain function. We will be testing a value
+	 * greater than the lower range.
+	 */
+	@Test
+	public void constrainOutsideLowerRange() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double returnVal = testRange1.constrain(1); // Seeing if range (2, 6) has a constrained value with 1
+		assertEquals("The value returned should be 2", 2, returnVal, .000000001d);
+		// assertion that expected value matches the actual value (2)
+	}
+	
+	/**
+	 * This test will be testing the constrain function. We will be testing a value
+	 * greater than the lower range.
+	 */
+	@Test
+	public void constrainOutsideLowerRangeEqual() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		double returnVal = testRange1.constrain(2); // Seeing if range (2, 6) has a constrained value with 
+		assertEquals("The value returned should be 2", 2, returnVal, .000000001d);
+		// assertion that expected value matches the actual value (2)
+	}
+
 	// -----------------------------------------------------------------------------------------
 	// End of code by Alexis and Rachel
 	// -----------------------------------------------------------------------------------------
