@@ -782,16 +782,16 @@ public class DataUtilitiesTest {
 			will(returnValue(2));
 			
 			atLeast(1).of(data).getValue(0);
-			will(returnValue(1));
+			will(returnValue(1.0));
 			
 			atLeast(1).of(data).getValue(1);
-			will(returnValue(5));
+			will(returnValue(5.0));
 			
 			atLeast(1).of(data).getKey(0);
-			will(returnValue(25));
+			will(returnValue(25.0));
 			
 			atLeast(1).of(data).getKey(1);
-			will(returnValue(26));
+			will(returnValue(26.0));
 			
 		}});
 		//First adds 1 + 5 together all of the values and then it takes the key 
@@ -811,16 +811,16 @@ public class DataUtilitiesTest {
 			will(returnValue(2));
 			
 			atLeast(1).of(data).getValue(0);
-			will(returnValue(1));
+			will(returnValue(1.0));
 			
 			atLeast(1).of(data).getValue(1);
-			will(returnValue(5));
+			will(returnValue(5.0));
 			
 			atLeast(1).of(data).getKey(0);
-			will(returnValue(19));
+			will(returnValue(19.0));
 			
 			atLeast(1).of(data).getKey(1);
-			will(returnValue(26));
+			will(returnValue(26.0));
 			
 		}});
 		//First adds 1 + 5 together all of the values and then it takes the key 
@@ -857,22 +857,22 @@ public class DataUtilitiesTest {
 			will(returnValue(3));
 			
 			atLeast(1).of(data).getValue(0);
-			will(returnValue(1));
+			will(returnValue(1.0));
 			
 			atLeast(1).of(data).getValue(1);
-			will(returnValue(5));
+			will(returnValue(5.0));
 			
 			atLeast(1).of(data).getValue(2);
 			will(returnValue(null));
 			
 			atLeast(1).of(data).getKey(0);
-			will(returnValue(25));
+			will(returnValue(25.0));
 			
 			atLeast(1).of(data).getKey(1);
-			will(returnValue(26));
+			will(returnValue(26.0));
 			
 			atLeast(1).of(data).getKey(2);
-			will(returnValue(27));
+			will(returnValue(27.0));
 			
 		}});
 		//First adds 1 + 5 together all of the values and then it takes the key 
@@ -880,6 +880,89 @@ public class DataUtilitiesTest {
 		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
 		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+	}
+	
+	//------------- calculateRowTotal(Values2D data, int row, int[] validCols) Tests -----------
+	@Test
+	public void calculateRowTotalNullChecking() {
+		try {
+			final Values2D valueToPass = null;
+			final int rowNumberToPass = 0;
+			final int[] validColumnsToPass = {0};
+			DataUtilities.calculateRowTotal(valueToPass, rowNumberToPass, validColumnsToPass);
+			// calling calculateRowTotal() with a null data object
+			fail("This method should throw an exception!");
+			// creating a failure message for if calculateRowTotal() does not throw an
+			// exception
+		} catch (Exception e) {
+			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
+					e.getClass());
+			// catching the exception, asserting that an IllegalArgumentException was thrown
+		}
+	}
+	
+	@Test
+	public void calculateRowTotalWithNull() {
+		Mockery mockingContext = new Mockery();
+		// creating a new mock object called mockingContext
+		final Values2D values = mockingContext.mock(Values2D.class);
+		// mock object (mockingContext) is stored in the local variable 'values'
+		// 'values' is final so it can be referred to from within expectation blocks
+
+		mockingContext.checking(new Expectations() {
+			// a mock expectation block containing expectations of value
+			{
+				one(values).getColumnCount();
+				// invocation of getColumnCount() is expected once
+				will(returnValue(4));
+				// will always returns 4 when getColumnCount() is called
+
+				one(values).getValue(1, 0);
+				// invocation of getValue(1, 0) is expected once
+				will(returnValue(1.0));
+				// will always returns 1 when getValue(1, 0) is called
+
+				one(values).getValue(1, 1);
+				// invocation of getValue(1, 1) is expected once
+				will(returnValue(2.0));
+				// will always returns 2 when getValue(1, 1) is called
+
+				one(values).getValue(1, 2);
+				// invocation of getValue(1, 2) is expected once
+				will(returnValue(3.0));
+				// will always returns 3 when getValue(1, 2) is called
+
+				one(values).getValue(1, 3);
+				// invocation of getValue(1, 3) is expected once
+				will(returnValue(4.0));
+				// will always returns 4 when getValue(1, 3) is called
+			}
+		});
+		int rowNumber = 1; // setting rowNumber to have an int value of 1
+		final int[] validColumnsToPass = {1};
+		double result = DataUtilities.calculateRowTotal(values, rowNumber, validColumnsToPass);
+		// calling calculateRowTotal with Values2D = values and at rowNumber 1
+		assertEquals("The row total is adding up to 10", 10, result, .000000001d);
+		// asserting the result adds up to 10 (1 + 2 + 3 + 4 = 10)
+	}
+	
+	//------------- calculateColumnTotal(Values2D data, int column, int[] validRows) Tests -----------
+	@Test
+	public void calculateColumnTotalNullChecking() {
+		try {
+			final Values2D valueToPass = null;
+			final int columnNumberToPass = 0;
+			final int[] validRowsToPass = {0};
+			DataUtilities.calculateColumnTotal(valueToPass, columnNumberToPass, validRowsToPass);
+			// calling calculateColumnTotal() with a null data object
+			fail("This method should throw an exception!");
+			// creating a failure message for if calculateColumnTotal() does not throw an
+			// exception
+		} catch (Exception e) {
+			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
+					e.getClass());
+			// catching the exception, asserting that an IllegalArgumentException was thrown
+		}
 	}
 	
 	
@@ -1004,7 +1087,6 @@ public class DataUtilitiesTest {
 		double[][] actualArray = DataUtilities.clone(array);
 		assertArrayEquals("createNumberArray failed the correct array values are.", array, actualArray);
 	}
-	
 	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
