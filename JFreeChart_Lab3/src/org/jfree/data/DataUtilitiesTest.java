@@ -773,7 +773,7 @@ public class DataUtilitiesTest {
 	//------------- getCumulativePercentages(KeyedValues data) Tests -----------
 	
 	@Test
-	public void cumulativePercentageForIndexZeroSixteenPercent() {
+	public void cumulativePercentageForIndexZeroSixteen() {
 		Mockery mockingContext = new Mockery();
 		final KeyedValues data = mockingContext.mock(KeyedValues.class);
 		
@@ -791,14 +791,95 @@ public class DataUtilitiesTest {
 			will(returnValue(25));
 			
 			atLeast(1).of(data).getKey(1);
-			will(returnValue(33));
+			will(returnValue(26));
 			
 		}});
 		//First adds 1 + 5 together all of the values and then it takes the key 
 		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
 		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
-		assertEquals("The value at the key of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+	}
+	
+	@Test
+	public void cumulativePercentageForIndexOneHundred() {
+		Mockery mockingContext = new Mockery();
+		final KeyedValues data = mockingContext.mock(KeyedValues.class);
+		
+		mockingContext.checking(new Expectations() {{
+			atLeast(1).of(data).getItemCount();
+			will(returnValue(2));
+			
+			atLeast(1).of(data).getValue(0);
+			will(returnValue(1));
+			
+			atLeast(1).of(data).getValue(1);
+			will(returnValue(5));
+			
+			atLeast(1).of(data).getKey(0);
+			will(returnValue(19));
+			
+			atLeast(1).of(data).getKey(1);
+			will(returnValue(26));
+			
+		}});
+		//First adds 1 + 5 together all of the values and then it takes the key 
+		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
+		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
+		KeyedValues result = DataUtilities.getCumulativePercentages(data);
+		assertEquals("The value at the index of 0 is 1.0", 1.0, result.getValue(1).doubleValue(), .000000001d);
+	}
+	
+	
+	@Test
+	public void cumulativePercentageDataNullCheck() {
+		try {
+			final KeyedValues dataToPass = null;
+			DataUtilities.getCumulativePercentages(dataToPass);
+			// calling getCumulativePercentages() with a null data object
+			fail("This method should throw an exception!");
+			// creating a failure message for if getCumulativePercentages() does not throw an
+			// exception
+		} catch (Exception e) {
+			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
+					e.getClass());
+			// catching the exception, asserting that an IllegalArgumentException was thrown
+		}
+	}
+	
+	@Test
+	public void cumulativePercentageForIndexZeroSixteenPercentNullIncluded() {
+		Mockery mockingContext = new Mockery();
+		final KeyedValues data = mockingContext.mock(KeyedValues.class);
+		
+		mockingContext.checking(new Expectations() {{
+			atLeast(1).of(data).getItemCount();
+			will(returnValue(3));
+			
+			atLeast(1).of(data).getValue(0);
+			will(returnValue(1));
+			
+			atLeast(1).of(data).getValue(1);
+			will(returnValue(5));
+			
+			atLeast(1).of(data).getValue(2);
+			will(returnValue(null));
+			
+			atLeast(1).of(data).getKey(0);
+			will(returnValue(25));
+			
+			atLeast(1).of(data).getKey(1);
+			will(returnValue(26));
+			
+			atLeast(1).of(data).getKey(2);
+			will(returnValue(27));
+			
+		}});
+		//First adds 1 + 5 together all of the values and then it takes the key 
+		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
+		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
+		KeyedValues result = DataUtilities.getCumulativePercentages(data);
+		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
 	}
 	
 	
