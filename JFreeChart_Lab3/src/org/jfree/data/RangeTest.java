@@ -681,6 +681,31 @@ public class RangeTest {
 	// End of code by Alexis and Lauraine
 	// -----------------------------------------------------------------------------------------
 
+	//---------------------START OF LAB 3 CODE----------------------
+	
+	
+	// -----------------------------------------------------------------------------------------
+		// Code written by Alexis and Rachel
+		// -----------------------------------------------------------------------------------------
+		/* Alexis codes and Rachel reviews */
+
+	/**
+	 * This test will try to create a Range object where the lower bound is greater than the upper bound
+	 */
+	@Test
+	public void constructorLowerBoundGreater() {
+		try {
+			testRange1 = new Range(6,2);
+		} catch(Exception e) {
+			fail("An illegal argument exception was caught when testing if the lower bound is greater than the upper bound");
+		}
+		
+	}
+	// -----------------------------------------------------------------------------------------
+	// End of code by Alexis and Rachel
+	// -----------------------------------------------------------------------------------------
+
+	
 	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
