@@ -441,7 +441,7 @@ public class RangeTest {
 	 */
 	@Test
 	public void combineSecondParameterNullUpperBound() {
-		Range tempRange = Range.combine(null, new Range(-8, -2)); // combine our null range with a given range of (-8,
+		Range tempRange = Range.combine(new Range(-8, -2), null); // combine our null range with a given range of (-8,
 																	// -2)
 		double upperBound = tempRange.getUpperBound(); // get our new upper bound for the combined range
 		assertEquals("The combined upper bound should be -2.0 and it is " + upperBound, -2.0, upperBound, .000000001d);
@@ -693,13 +693,11 @@ public class RangeTest {
 	 * This test will try to create a Range object where the lower bound is greater
 	 * than the upper bound
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void constructorLowerBoundGreater() {
-		try {
 			testRange1 = new Range(6, 2);
-		} catch (Exception e) {
-			fail("An illegal argument exception was caught when testing if the lower bound is greater than the upper bound");
-		} // the test should throw an IllegalArgumentException because the lower bound
+			assertEquals("The lower bound value should be null", testRange1);
+			// the test should throw an IllegalArgumentException because the lower bound
 			// should be on the left hand side of the argument.
 	}
 
@@ -859,10 +857,139 @@ public class RangeTest {
 	@Test
 	public void constrainOutsideLowerRangeEqual() {
 		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
-		double returnVal = testRange1.constrain(2); // Seeing if range (2, 6) has a constrained value with 
+		double returnVal = testRange1.constrain(2); // Seeing if range (2, 6) has a constrained value with 2
 		assertEquals("The value returned should be 2", 2, returnVal, .000000001d);
 		// assertion that expected value matches the actual value (2)
 	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a null range1
+	 * and a not null, non-NaN range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1Null_Range2NotNull() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(null, testRange1); // combine a null range1 and not null range2 
+		assertEquals("The returned object should be Range(2,6)", returnRange, testRange1);
+		// assertion that expected value matches the actual value Range(2,6)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a null range1
+	 * and a not null, NaN range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1Null_Range2NaN() {
+		double NaNParam = Math.sqrt(-1); //creating a not-a-number to be used as parameters
+		testRange1 = new Range(NaNParam, NaNParam); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(null, testRange1); // combine a null range1 and not null, NaN range2 
+		assertNull("The return value should be null", returnRange);
+		// assertion that expected value matches the actual value (null)
+	}
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a null range1
+	 * and a null range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1Null_Range2Null() {
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(null, null); // combine a null range1 and null range2 
+		assertNull("The return value should be null", returnRange);
+		// assertion that expected value matches the actual value (null)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a null, NaN range1
+	 * and a null range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1NaN_Range2Null() {
+		double NaNParam = Math.sqrt(-1); //creating a not-a-number to be used as parameters
+		testRange1 = new Range(NaNParam, NaNParam); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, null); // combine a not null, NaN range1 and null range2 
+		assertNull("The return value should be null", returnRange);
+		// assertion that expected value matches the actual value (null)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a non-null, non-NaN range1
+	 * and a null range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1NotNull_Range2Null() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, null); // combine a not null range1 and null range2 
+		assertEquals("The return value should be Range(2,6)", returnRange, testRange1);
+		// assertion that expected value matches the actual Range(2,6)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a non-null, non-NaN range1
+	 * and a non-null, non-NaN range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1NotNull_Range2NotNull_NoNaN() {
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		Range testRange2 = new Range(4,7);
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, testRange2); // combine a not null, NaN range1 null range2 
+		assertEquals("The return value should be Range(2,7)", returnRange, new Range(2,7));
+		// assertion that expected value matches the actual Range(2,7)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a non-null, NaN range1
+	 * and a non-null, NaN range2.
+	 */
+	@Test
+	public void combineIgnoringNaN_Range1NotNull_Range2NotNull_AllNaN() {
+		double NaNParam1 = Math.sqrt(-1); //creating a not-a-number to be used as parameters
+		double NaNParam2 = Math.sqrt(-2);
+		testRange1 = new Range(NaNParam1, NaNParam2); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, testRange1); // combine a not null, NaN range1 null range2 
+		assertNull("The return value should be null", returnRange);
+		// assertion that expected value matches the actual value (null)
+	}
+	
+	/**
+	 * This test will be testing the combineIgnoringNaN function. We will be testing a minimum NaN value,
+	 * meaning that the lower parameter for range1 and range2 is NaN.
+	 */
+	@Test
+	public void combineIgnoringNaN_NaNMinRange() {
+		double NaNParam1 = Math.sqrt(-1); //creating a not-a-number to be used as parameters
+		double NaNParam2 = Math.sqrt(-2);
+		testRange1 = new Range(NaNParam1, NaNParam2); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, new Range(NaNParam1, 4)); // combine a not null, NaN range1 null range2 
+		assertEquals("The return value should be 4", returnRange.getUpperBound(), 4, .000000001d);
+		// assertion that expected value matches the actual value of 4
+	}
+	
+	//------ tests for min and max------
+	/**
+	 * This test will be testing the min function through the use of the combineIgnoringNaN function. We will be testing 
+	 * the second parameter to min and max as a NaN value
+	 */
+	@Test
+	public void minAndMaxD2_NaN() {
+		double NaNParam1 = Math.sqrt(-1); //creating a not-a-number to be used as parameters
+		double NaNParam2 = Math.sqrt(-2);
+		testRange1 = new Range(1, 4); // This is creating the range for testing purposes.
+		Range returnRange;
+		returnRange = Range.combineIgnoringNaN(testRange1, new Range(NaNParam1, NaNParam2)); //will make a call to both min and max with d2 as a NaN value
+		assertEquals("The return value should be 4", returnRange.getUpperBound(), 4, .000000001d);
+		// assertion that expected value matches the actual value of 4
+	}
+	
+	//------ end tests for min and max------
+	
+	
 
 	// -----------------------------------------------------------------------------------------
 	// End of code by Alexis and Rachel
