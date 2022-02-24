@@ -176,9 +176,9 @@ public class RangeTest {
 		}
 		// The assert checks for the exception which is being thrown.
 	}
-	
+
 	/**
-	 * This test will simulate expanding the range by 0.44 and 0.33  - asserting that
+	 * This test will simulate expanding the range by 0.44 and 0.33 - asserting that
 	 * the upper margin will be expanded to be -0.68.
 	 */
 	@Test
@@ -186,22 +186,22 @@ public class RangeTest {
 		// Using the margin value in percentages which will return the upper bound as a
 		// decimal.
 		testRange1 = new Range(-6, -2); // This is creating the range for testing purposes.
-		testExpandRange = Range.expand(testRange1, 0.44 , 0.33);// Using the expand method to pass in the test
+		testExpandRange = Range.expand(testRange1, 0.44, 0.33);// Using the expand method to pass in the test
 		// range and the margin values
 		assertEquals("The upper margin range will be -0.68", -0.68, testExpandRange.getUpperBound(), .000000001d);
 		// assertion that expected value matches the actual value (-0.68)
 	}
-	
+
 	/**
-	 * This test will simulate expanding the range by -0.29 and -0.35  - asserting that
-	 * the lower margin will be expanded to be -4.84.
+	 * This test will simulate expanding the range by -0.29 and -0.35 - asserting
+	 * that the lower margin will be expanded to be -4.84.
 	 */
 	@Test
 	public void expandTestUpperMarginNegativeMargins() {// This is created the see if the range will change or not.
 		// Using the margin value in percentages which will return the upper bound as a
 		// decimal.
 		testRange1 = new Range(-6, -2); // This is creating the range for testing purposes.
-		testExpandRange = Range.expand(testRange1, -0.29 , -0.35);// Using the expand method to pass in the test
+		testExpandRange = Range.expand(testRange1, -0.29, -0.35);// Using the expand method to pass in the test
 		// range and the margin values
 		assertEquals("The upper margin range will be -4.84", -4.84, testExpandRange.getLowerBound(), .000000001d);
 		// assertion that expected value matches the actual value (-4.84)
@@ -235,6 +235,7 @@ public class RangeTest {
 		assertEquals("The upper value will be 1", 1, newRange.getUpperBound(), .000000001d);
 		// assertion that expected upper bound matches 1
 	}
+
 	/**
 	 * This test will simulate expanding a range of 4 and 6 to include the value 5 -
 	 * asserting that the upper margin will remain the same and be 6.
@@ -571,8 +572,8 @@ public class RangeTest {
 	}
 
 	/**
-	 * This test will be used to test the length of a range composed of a decimal and
-	 * an integer
+	 * This test will be used to test the length of a range composed of a decimal
+	 * and an integer
 	 */
 	@Test
 	public void testGetLengthRangeMixedDecimal() {
@@ -606,7 +607,7 @@ public class RangeTest {
 		Range testShiftedRange = Range.shift(null, 2.0);
 		assertEquals("The lower bound value should be null", testShiftedRange.getLowerBound());
 	}
-	
+
 	/**
 	 * This test will be used to test what happens when a range is shifted by a
 	 * positive amount. We are only checking the upper bound of the range.
@@ -681,31 +682,65 @@ public class RangeTest {
 	// End of code by Alexis and Lauraine
 	// -----------------------------------------------------------------------------------------
 
-	//---------------------START OF LAB 3 CODE----------------------
-	
-	
+	// ---------------------START OF LAB 3 CODE----------------------
+
 	// -----------------------------------------------------------------------------------------
-		// Code written by Alexis and Rachel
-		// -----------------------------------------------------------------------------------------
-		/* Alexis codes and Rachel reviews */
+	// Code written by Alexis and Rachel
+	// -----------------------------------------------------------------------------------------
+	/* Alexis codes and Rachel reviews */
 
 	/**
-	 * This test will try to create a Range object where the lower bound is greater than the upper bound
+	 * This test will try to create a Range object where the lower bound is greater
+	 * than the upper bound
 	 */
 	@Test
 	public void constructorLowerBoundGreater() {
 		try {
-			testRange1 = new Range(6,2);
-		} catch(Exception e) {
+			testRange1 = new Range(6, 2);
+		} catch (Exception e) {
 			fail("An illegal argument exception was caught when testing if the lower bound is greater than the upper bound");
 		}
-		
+	}
+	
+	/**
+	 * This test will be testing the contains function. We will be using a value
+	 * within the range for this test.
+	 */
+	@Test
+	public void containsValueWithinRange() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		boolean testBool = testRange1.contains(3); // Seeing if range (2, 6) contains the value 3
+		assertTrue("The expected output should be true", testBool);
+		// assertion that expected value matches the actual value (true)
+	}
+	
+	/**
+	 * This test will be testing the contains function. We will be using a value
+	 * outside the lower range for this test.
+	 */
+	@Test
+	public void containsValueOutsideRangeLower() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		boolean testBool = testRange1.contains(0); // Seeing if range (2, 6) contains the value 0
+		assertFalse("The expected output should be false", testBool);
+		// assertion that expected value matches the actual value (false)
+	}
+	
+	/**
+	 * This test will be testing the contains function. We will be using a value
+	 * outside the upper range for this test.
+	 */
+	@Test
+	public void containsValueOutsideRangeHigher() { 
+		testRange1 = new Range(2, 6); // This is creating the range for testing purposes.
+		boolean testBool = testRange1.contains(8); // Seeing if range (2, 6) contains the value 8
+		assertFalse("The expected output should be false", testBool);
+		// assertion that expected value matches the actual value (false)
 	}
 	// -----------------------------------------------------------------------------------------
 	// End of code by Alexis and Rachel
 	// -----------------------------------------------------------------------------------------
 
-	
 	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
