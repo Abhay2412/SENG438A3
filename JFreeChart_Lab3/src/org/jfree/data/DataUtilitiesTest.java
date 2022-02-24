@@ -965,6 +965,50 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	@Test
+	public void calculateColumnTotalWithNull() {
+		Mockery mockingContext = new Mockery();
+		// creating a new mock object called mockingContext
+		final Values2D values = mockingContext.mock(Values2D.class);
+		// mock object (mockingContext) is stored in the local variable 'values'
+		// 'values' is final so it can be referred to from within expectation blocks
+
+		mockingContext.checking(new Expectations() {
+			// a mock expectation block containing expectations of value
+			{
+				one(values).getRowCount();
+				// invocation of getColumnCount() is expected once
+				will(returnValue(4));
+				// will always returns 4 when getColumnCount() is called
+
+				one(values).getValue(0, 1);
+				// invocation of getValue(1, 0) is expected once
+				will(returnValue(1.0));
+				// will always returns 1 when getValue(1, 0) is called
+
+				one(values).getValue(1, 1);
+				// invocation of getValue(1, 1) is expected once
+				will(returnValue(2.0));
+				// will always returns 2 when getValue(1, 1) is called
+
+				one(values).getValue(2, 1);
+				// invocation of getValue(1, 2) is expected once
+				will(returnValue(3.0));
+				// will always returns 3 when getValue(1, 2) is called
+
+				one(values).getValue(3, 1);
+				// invocation of getValue(1, 3) is expected once
+				will(returnValue(4.0));
+				// will always returns 4 when getValue(1, 3) is called
+			}
+		});
+		int columnNumber = 1; // setting rowNumber to have an int value of 1
+		final int[] validRowsToPass = {1};
+		double result = DataUtilities.calculateColumnTotal(values, columnNumber, validRowsToPass);
+		// calling calculateRowTotal with Values2D = values and at rowNumber 1
+		assertEquals("The column total is adding up to 10", 10, result, .000000001d);
+		// asserting the result adds up to 10 (1 + 2 + 3 + 4 = 10)
+	}
 	
 	/* Lauraine codes and Abhay Reviews */
 	@Test
