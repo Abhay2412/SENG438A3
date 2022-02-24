@@ -964,6 +964,47 @@ public class DataUtilitiesTest {
 		// asserting the result adds up to 3.5
 	}
 	
+	@Test
+	public void cloneNullParameter() {
+		try {
+			double[][] array = null;
+			DataUtilities.clone(array);
+			fail("This method should throw an exception!");
+		} catch (Exception e) {
+			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
+					e.getClass());
+		}
+	}
+
+	@Test
+	public void cloneEmptyArray() {
+		double[][] array = { {} };
+		double[][] resultArray = DataUtilities.clone(array);
+		assertArrayEquals("createNumberArray failed and is not an empty 2D array { {} }; .", array, resultArray);
+	}
+
+	@Test
+	public void cloneNullDataInArray() {
+		double[][] array = { { 2, 4, 5 }, null, { 19, 345 } };
+		double[][] resultArray = DataUtilities.clone(array);
+		assertArrayEquals("createNumberArray failed and is not an empty 2D array {{ {2, 4, 5}, {19, 345} }; .", array,
+				resultArray);
+	}
+
+	@Test
+	public void cloneArrayOfBigAndPositiveValues() {
+		double[][] array = { { 2425.0, 1285.0, 7697.0, 4845.0, 59415.0 }, { 24665.0, 1255.0, 798.0, 4232.0, 5000.0 } };
+		double[][] actualArray = DataUtilities.clone(array);
+		assertArrayEquals("createNumberArray failed the correct array values are.", array, actualArray);
+	}
+
+	@Test
+	public void cloneArrayOfSmallAndNegativeValues() {
+		double[][] array = { { -0.025}, { -000056.0 } };
+		double[][] actualArray = DataUtilities.clone(array);
+		assertArrayEquals("createNumberArray failed the correct array values are.", array, actualArray);
+	}
+	
 	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
