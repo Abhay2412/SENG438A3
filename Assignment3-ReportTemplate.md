@@ -154,8 +154,37 @@ Text…
 Text…
 
 # 8 A discussion on how the team work/effort was divided and managed
+As a group, we decided to use pair testing and divided the two classes between each pair. All of the work was done remotely using Discord with each group member sharing their screens in the pairs that were formed. The methods were also divided to make it easier to complete the lab instead of doing it all in one large group. The work was divided as followed:
+ 
+#### Pair 1: Lauraine and Abhay - DataUtilities
+This pair developed a total of __ additional test cases:
+- 
+#### Pair 1: Alexis and Rachel - Range
+This pair developed a total of 23 additional test cases:
+1. constructorLowerBoundGreater() 
+2. containsValueWithinRange()
+3. containsValueOutsideRangeLower()
+4. containsValueOutsideRangeHigher() intersectsRangeIsTrue_SecondParamGreater() 
+5. intersectsRangeIsFalse_BothParamLess()
+6. intersectsRangeIsTrue_BothParamInsideRange()
+7. intersectsRangeIsFalse_BothParamGreater()
+8. intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() 
+9. constrainWithinRange() 
+10. constrainOutsideUpperRange()
+11. constrainOutsideLowerRange()
+12. constrainOutsideLowerRangeEqual()
+13. combineIgnoringNaN_Range1Null_Range2NotNull()
+14. combineIgnoringNaN_Range1Null_Range2NaN()
+15. combineIgnoringNaN_Range1Null_Range2Null() 
+16. combineIgnoringNaN_Range1NaN_Range2Null() 
+17. combineIgnoringNaN_Range1NotNull_Range2Null() 
+18. combineIgnoringNaN_Range1NotNull_Range2NotNull_NoNaN()
+19. combineIgnoringNaN_Range1NotNull_Range2NotNull_AllNaN()
+20. combineIgnoringNaN_NaNMinRange()
+21. minAndMaxD2_NaN() 
+22. expandLowerGreaterThanUpper_Lower()
+23. expandLowerGreaterThanUpper_Upper()
 
-Text…
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
