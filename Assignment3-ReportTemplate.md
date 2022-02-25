@@ -24,7 +24,7 @@ Text…
 ### Test plan:
 Our test plan is to first identify the existing branch, statement, and condition coverage in our test files. Once this is identified, we will select various methods that we had not tested previously and implement singular test cases to see if we can improve any of our coverage metrics. As we develop tests, we will be continuously checking the coverage. After we have determined how to increase each type of coverage, we will split up the number of test cases we need to write among ourselves and pair-program similar to assignments 1 and 2. In this lab, we will be using EclEmma meaning that we will be using branch, line, and method coverages (replacing statement and condition with branch and method).
  
-### Initial Coverage:
+## Initial Coverage:
  
 **Range.java (Alexis, Rachel)**
 - Branch = 22.2%
@@ -117,7 +117,7 @@ Added tests using negative lowerMargin and upperMargin to make the lowerBound gr
 *Note: public void expandLowerGreaterThanUpper_Upper() results in a failure*
  
  
-### Final Coverage:
+## Final Coverage:
 **Range.java (Alexis, Rachel)**
 - Line = 92.7%
 - Branch = 84.7%
