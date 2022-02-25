@@ -39,26 +39,26 @@ Our test plan is to first identify the existing branch, statement, and condition
  
 ## Pair 1: Lauraine and Abhay - DataUtilities 
 ### Lauraine Tests
-####` equal(double[][] a, double[][] b) `
+` equal(double[][] a, double[][] b) `
 Added one test to test when a.lenght != b.length
 - Branch: 45.8%
 - Line: 46.2%
 - Method: 50.0%
  
-####` calculateColumnTotal(Values2D data, int column) `
+` calculateColumnTotal(Values2D data, int column) `
 Added one test to test what happens if a value in the data is null.
 - Branch: 47.9%
 - Line: 46.2%
 - Method: 50.0%
  
-####` calculateRowTotal(Values2D data, int row) `
+` calculateRowTotal(Values2D data, int row) `
 Added one test to test what happens if a value in the data is null.
 - Branch: 50.0%
 - Line: 46.2%
 - Method: 50.0%
  
 ### Abhay Tests
-####` getCumulativePercentages(KeyedValues data) `
+` getCumulativePercentages(KeyedValues data) `
 With the addition of cumulativePercentageForIndexZeroSixteenPercent()
 - Branch: 56.2%
 - Line: 62.5%
@@ -72,13 +72,13 @@ With the addition of cumulativePercentageForIndexZeroSixteenPercentNullIncluded(
  
 ## Pair 2: Alexis and Rachel - Range
 ### Alexis Tests
-####` Range(double lower, double upper)` 
+` Range(double lower, double upper)` 
 Added one test to test for exception on lower > upper margins
 - Branch: 23.6 %
 - Line: 42.7%
 - Method: 52.2%
  
-####` intersects(double b0, double b1) `
+` intersects(double b0, double b1) `
 Added tests for:
 b0 < than lower margin and intersects, TRUE 
 b0 and 1 are less than both bounds and dont intersect, FALSE
@@ -89,21 +89,21 @@ b0 > lower bound, b0 > upper bound, b1 < b0, no intersection, FALSE
 - Line: 46.6%
 - Method: 60.9%
  
-####` combineIgnoringNaN(Range range1, Range range2)`
+` combineIgnoringNaN(Range range1, Range range2)`
  
-####`​​ min(double d1, double d2) and max(double d1, double d2)`
+` min(double d1, double d2) and max(double d1, double d2)`
  
 ### Rachel Tests
-####` contains(double value) `
+` contains(double value) `
 Needed Higher, lower, and middle value to get from little to full coverage 
 - Branch: 29.2%
 - Line: 43.7%
 - Method: 56.5%
  
-####` constrain(double value) `
+` constrain(double value) `
 Added tests for value within, and outside the range (greater than upper and lower bounds)
- 
-####` expand(Range range, double lowerMargin, double upperMargin)` 
+
+` expand(Range range, double lowerMargin, double upperMargin)` 
 Added tests using negative lowerMargin and upperMargin to make the lowerBound greater than the upperBound.
 *Note: public void expandLowerGreaterThanUpper_Upper() results in a failure*
  
