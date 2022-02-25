@@ -86,11 +86,11 @@ Added one test to test for exception on lower > upper margins
 ` intersects(double b0, double b1) `
 
 Added tests for:
-b0 < than lower margin and intersects, TRUE 
-b0 and 1 are less than both bounds and dont intersect, FALSE
-b0 > lower margin, b1 lower than upper margin, intersect, TRUE
-b0 > lower, b1 > upper, no intersection, FALSE
-b0 > lower bound, b0 > upper bound, b1 < b0, no intersection, FALSE
+1. b0 < than lower margin and intersects, TRUE 
+2. b0 and 1 are less than both bounds and dont intersect, FALSE
+3. b0 > lower margin, b1 lower than upper margin, intersect, TRUE
+4. b0 > lower, b1 > upper, no intersection, FALSE
+5. b0 > lower bound, b0 > upper bound, b1 < b0, no intersection, FALSE
 - Branch: 40.3%
 - Line: 46.6%
 - Method: 60.9%
