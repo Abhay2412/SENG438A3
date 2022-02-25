@@ -135,6 +135,16 @@ Text…
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
+### Data Utilities
+
+### Range
+#### Line
+![](media/Range_Line.png)
+#### Branch
+![](media/Range_Branch.png)
+#### Method
+![](media/Range_Method.png)
+
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
 Text…
