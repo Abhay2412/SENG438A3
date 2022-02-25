@@ -158,7 +158,7 @@ As a group, we decided to use pair testing and divided the two classes between e
  
 #### Pair 1: Lauraine and Abhay - DataUtilities
 This pair developed a total of __ additional test cases:
-- 
+ 
 #### Pair 1: Alexis and Rachel - Range
 This pair developed a total of 23 additional test cases:
 1. constructorLowerBoundGreater() 
