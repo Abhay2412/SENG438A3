@@ -136,6 +136,12 @@ Text…
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
 ## Data Utilities
+### Line
+
+### Branch
+
+### Method
+
 
 ## Range
 ### Line
