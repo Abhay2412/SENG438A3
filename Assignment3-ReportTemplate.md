@@ -4,8 +4,8 @@
 
 | Group \#:      |  21   |
 | -------------- | --- |
-| Student Names: |     |
-|                |     |
+| Student Names: | Alexis Hamrak   |
+|                | Lauraine Baffot   |
 |                | Abhay Khosla |
 |                | Rachel Renegado    |
 
