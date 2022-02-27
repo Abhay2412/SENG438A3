@@ -770,67 +770,74 @@ public class DataUtilitiesTest {
 	// -----------------------------------------------------------------------------------------
 	/* Abhay codes and Lauraine Reviews */
 
-	//------------- getCumulativePercentages(KeyedValues data) Tests -----------
-	
+	// ------------- getCumulativePercentages(KeyedValues data) Tests -----------
+
 	@Test
 	public void cumulativePercentageForIndexZeroSixteen() {
 		Mockery mockingContext = new Mockery();
+		// creating a new mock object called mockingContext
 		final KeyedValues data = mockingContext.mock(KeyedValues.class);
-		
-		mockingContext.checking(new Expectations() {{
-			atLeast(1).of(data).getItemCount();
-			will(returnValue(2));
-			
-			atLeast(1).of(data).getValue(0);
-			will(returnValue(1.0));
-			
-			atLeast(1).of(data).getValue(1);
-			will(returnValue(5.0));
-			
-			atLeast(1).of(data).getKey(0);
-			will(returnValue(25.0));
-			
-			atLeast(1).of(data).getKey(1);
-			will(returnValue(26.0));
-			
-		}});
-		//First adds 1 + 5 together all of the values and then it takes the key 
-		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
-		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
+
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(1).of(data).getItemCount();
+				will(returnValue(2));
+
+				atLeast(1).of(data).getValue(0);
+				will(returnValue(1.0));
+
+				atLeast(1).of(data).getValue(1);
+				will(returnValue(5.0));
+
+				atLeast(1).of(data).getKey(0);
+				will(returnValue(25.0));
+
+				atLeast(1).of(data).getKey(1);
+				will(returnValue(26.0));
+
+			}
+		});
+		// First adds 1 + 5 together all of the values and then it takes the key
+		// at the index of 0 and then does 25/6 where 25 is the running total and 6 is
+		// the total from all of the values
+		// So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
-		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(),
+				.000000001d);
 	}
-	
+
 	@Test
 	public void cumulativePercentageForIndexOneHundred() {
 		Mockery mockingContext = new Mockery();
 		final KeyedValues data = mockingContext.mock(KeyedValues.class);
-		
-		mockingContext.checking(new Expectations() {{
-			atLeast(1).of(data).getItemCount();
-			will(returnValue(2));
-			
-			atLeast(1).of(data).getValue(0);
-			will(returnValue(1.0));
-			
-			atLeast(1).of(data).getValue(1);
-			will(returnValue(5.0));
-			
-			atLeast(1).of(data).getKey(0);
-			will(returnValue(19.0));
-			
-			atLeast(1).of(data).getKey(1);
-			will(returnValue(26.0));
-			
-		}});
-		//First adds 1 + 5 together all of the values and then it takes the key 
-		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
-		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
+
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(1).of(data).getItemCount();
+				will(returnValue(2));
+
+				atLeast(1).of(data).getValue(0);
+				will(returnValue(1.0));
+
+				atLeast(1).of(data).getValue(1);
+				will(returnValue(5.0));
+
+				atLeast(1).of(data).getKey(0);
+				will(returnValue(19.0));
+
+				atLeast(1).of(data).getKey(1);
+				will(returnValue(26.0));
+
+			}
+		});
+		// First adds 1 + 5 together all of the values and then it takes the key
+		// at the index of 0 and then does 25/6 where 25 is the running total and 6 is
+		// the total from all of the values
+		// So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
 		assertEquals("The value at the index of 0 is 1.0", 1.0, result.getValue(1).doubleValue(), .000000001d);
 	}
-	
-	
+
 	@Test
 	public void cumulativePercentageDataNullCheck() {
 		try {
@@ -838,7 +845,8 @@ public class DataUtilitiesTest {
 			DataUtilities.getCumulativePercentages(dataToPass);
 			// calling getCumulativePercentages() with a null data object
 			fail("This method should throw an exception!");
-			// creating a failure message for if getCumulativePercentages() does not throw an
+			// creating a failure message for if getCumulativePercentages() does not throw
+			// an
 			// exception
 		} catch (Exception e) {
 			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
@@ -846,49 +854,53 @@ public class DataUtilitiesTest {
 			// catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
-	
+
 	@Test
 	public void cumulativePercentageForIndexZeroSixteenPercentNullIncluded() {
 		Mockery mockingContext = new Mockery();
 		final KeyedValues data = mockingContext.mock(KeyedValues.class);
-		
-		mockingContext.checking(new Expectations() {{
-			atLeast(1).of(data).getItemCount();
-			will(returnValue(3));
-			
-			atLeast(1).of(data).getValue(0);
-			will(returnValue(1.0));
-			
-			atLeast(1).of(data).getValue(1);
-			will(returnValue(5.0));
-			
-			atLeast(1).of(data).getValue(2);
-			will(returnValue(null));
-			
-			atLeast(1).of(data).getKey(0);
-			will(returnValue(25.0));
-			
-			atLeast(1).of(data).getKey(1);
-			will(returnValue(26.0));
-			
-			atLeast(1).of(data).getKey(2);
-			will(returnValue(27.0));
-			
-		}});
-		//First adds 1 + 5 together all of the values and then it takes the key 
-		//at the index of 0 and then does 25/6 where 25 is the running total and 6 is the total from all of the values
-		//So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
+
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(1).of(data).getItemCount();
+				will(returnValue(3));
+
+				atLeast(1).of(data).getValue(0);
+				will(returnValue(1.0));
+
+				atLeast(1).of(data).getValue(1);
+				will(returnValue(5.0));
+
+				atLeast(1).of(data).getValue(2);
+				will(returnValue(null));
+
+				atLeast(1).of(data).getKey(0);
+				will(returnValue(25.0));
+
+				atLeast(1).of(data).getKey(1);
+				will(returnValue(26.0));
+
+				atLeast(1).of(data).getKey(2);
+				will(returnValue(27.0));
+
+			}
+		});
+		// First adds 1 + 5 together all of the values and then it takes the key
+		// at the index of 0 and then does 25/6 where 25 is the running total and 6 is
+		// the total from all of the values
+		// So 25/6 = 4.166666667 - 4 = 0.166666667 * 100 which is 16.6 percent(16.6%)
 		KeyedValues result = DataUtilities.getCumulativePercentages(data);
-		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(), .000000001d);
+		assertEquals("The value at the index of 0 is 0.166666667", 0.166666667, result.getValue(0).doubleValue(),
+				.000000001d);
 	}
-	
-	//------------- calculateRowTotal(Values2D data, int row, int[] validCols) Tests -----------
+
+	// -- calculateRowTotal(Values2D data, int row, int[] validCols) Tests --
 	@Test
 	public void calculateRowTotalNullChecking() {
 		try {
 			final Values2D valueToPass = null;
 			final int rowNumberToPass = 0;
-			final int[] validColumnsToPass = {0};
+			final int[] validColumnsToPass = { 0 };
 			DataUtilities.calculateRowTotal(valueToPass, rowNumberToPass, validColumnsToPass);
 			// calling calculateRowTotal() with a null data object
 			fail("This method should throw an exception!");
@@ -900,7 +912,7 @@ public class DataUtilitiesTest {
 			// catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
-	
+
 	@Test
 	public void calculateRowTotalWithNull() {
 		Mockery mockingContext = new Mockery();
@@ -939,20 +951,20 @@ public class DataUtilitiesTest {
 			}
 		});
 		int rowNumber = 1; // setting rowNumber to have an int value of 1
-		final int[] validColumnsToPass = {1};
+		final int[] validColumnsToPass = { 1 };
 		double result = DataUtilities.calculateRowTotal(values, rowNumber, validColumnsToPass);
 		// calling calculateRowTotal with Values2D = values and at rowNumber 1
 		assertEquals("The row total is adding up to 10", 10, result, .000000001d);
 		// asserting the result adds up to 10 (1 + 2 + 3 + 4 = 10)
 	}
-	
-	//------------- calculateColumnTotal(Values2D data, int column, int[] validRows) Tests -----------
+
+	// -- calculateColumnTotal(Values2D data, int column, int[] validRows) Tests --
 	@Test
 	public void calculateColumnTotalNullChecking() {
 		try {
 			final Values2D valueToPass = null;
 			final int columnNumberToPass = 0;
-			final int[] validRowsToPass = {0};
+			final int[] validRowsToPass = { 0 };
 			DataUtilities.calculateColumnTotal(valueToPass, columnNumberToPass, validRowsToPass);
 			// calling calculateColumnTotal() with a null data object
 			fail("This method should throw an exception!");
@@ -964,7 +976,7 @@ public class DataUtilitiesTest {
 			// catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
-	
+
 	@Test
 	public void calculateColumnTotalWithNull() {
 		Mockery mockingContext = new Mockery();
@@ -1003,26 +1015,36 @@ public class DataUtilitiesTest {
 			}
 		});
 		int columnNumber = 1; // setting rowNumber to have an int value of 1
-		final int[] validRowsToPass = {1};
+		final int[] validRowsToPass = { 1 };
 		double result = DataUtilities.calculateColumnTotal(values, columnNumber, validRowsToPass);
 		// calling calculateRowTotal with Values2D = values and at rowNumber 1
 		assertEquals("The column total is adding up to 10", 10, result, .000000001d);
 		// asserting the result adds up to 10 (1 + 2 + 3 + 4 = 10)
 	}
-	
+
 	/* Lauraine codes and Abhay Reviews */
+
+	// ------------- equal(double[][] a, double[][] b) Test -----------
+	/**
+	 * This test will be testing the equal function where the 2D arrays are
+	 * different lengths.
+	 */
 	@Test
 	public void testEqualityOfArrays_DifferentArrayLength() {
 		// set up 2 arrays of different length
 		double[][] array1 = { { 4, -19.23, 20, 4, 17.2233, 10, 8, 6.00, 30, 1.11 } };
 		double[][] array2 = { { 4, -19.23, 20, 4 }, { 4.1, -19, 20.44, 4, 17.1234 } };
 
-		boolean equality = DataUtilities.equal(array1, array2);
+		boolean equality = DataUtilities.equal(array1, array2); // checks if arrays are equal
 
-		assertEquals("The equality should be true", false, equality);
+		assertEquals("The equality should be false", false, equality); // not equal
 	}
-	
-	
+
+	// --------- calculateColumnTotal(Values2D data, int column) Test ---------
+	/**
+	 * This test will be testing the calculateColumnTotal function when a value in
+	 * the data table is null.
+	 */
 	@Test
 	public void calculateColumnTotalNullData() {
 		Mockery mockingContext = new Mockery();
@@ -1056,7 +1078,12 @@ public class DataUtilitiesTest {
 		assertEquals("The column total is adding up to -25.98", -25.98, result, .000000001d);
 		// asserting the result adds up to -25.98
 	}
-	
+
+	// ------------- calculateRowTotal(Values2D data, int row) Test -----------
+	/**
+	 * This test will be testing the calculateRowTotal function when a value in the
+	 * data table is null.
+	 */
 	@Test
 	public void calculateRowTotalNullData() {
 		Mockery mockingContext = new Mockery();
@@ -1090,47 +1117,73 @@ public class DataUtilitiesTest {
 		assertEquals("The row total is adding up to 3.5", 3.5, result, .000000001d);
 		// asserting the result adds up to 3.5
 	}
-	
+
+	// ------------- clone(double[][] source) Tests -----------
+	/**
+	 * This test will be testing the clone function when the 2D array is null.
+	 */
 	@Test
 	public void cloneNullParameter() {
 		try {
-			double[][] array = null;
-			DataUtilities.clone(array);
-			fail("This method should throw an exception!");
+			double[][] array = null; // set up a null array
+			DataUtilities.clone(array); // try to clone this null array
+			fail("This method should throw an exception!"); // creating a failure message for if clone does not throw
+															// an exception
 		} catch (Exception e) {
 			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
-					e.getClass());
+					e.getClass()); // catching the exception, asserting that an IllegalArgumentException was thrown
 		}
 	}
 
+	/**
+	 * This test will be testing the clone function when the 2D array is empty.
+	 */
 	@Test
 	public void cloneEmptyArray() {
-		double[][] array = { {} };
-		double[][] resultArray = DataUtilities.clone(array);
+		double[][] array = { {} }; // set up an empty array
+		double[][] resultArray = DataUtilities.clone(array); // clone empty array
 		assertArrayEquals("createNumberArray failed and is not an empty 2D array { {} }; .", array, resultArray);
+		// assert that the clone function worked and the resultArray is also empty
 	}
 
+	/**
+	 * This test will be testing the clone function when the 2D array contains a
+	 * null value.
+	 */
 	@Test
 	public void cloneNullDataInArray() {
-		double[][] array = { { 2, 4, 5 }, null, { 19, 345 } };
-		double[][] resultArray = DataUtilities.clone(array);
-		assertArrayEquals("createNumberArray failed and is not an empty 2D array {{ {2, 4, 5}, {19, 345} }; .", array,
-				resultArray);
+		double[][] array = { { 2, 4, 5 }, null, { 19, 345 } }; // set an array with a null value
+		double[][] resultArray = DataUtilities.clone(array); // clone array
+		assertArrayEquals("createNumberArray failed the correct array values are {{ {2, 4, 5}, {19, 345} }; .", array,
+				resultArray); // assert that the clone function worked and skipped the null value
 	}
 
+	/**
+	 * This test will be testing the clone function when the 2D array contains big
+	 * positive values.
+	 */
 	@Test
 	public void cloneArrayOfBigAndPositiveValues() {
 		double[][] array = { { 2425.0, 1285.0, 7697.0, 4845.0, 59415.0 }, { 24665.0, 1255.0, 798.0, 4232.0, 5000.0 } };
-		double[][] actualArray = DataUtilities.clone(array);
-		assertArrayEquals("createNumberArray failed the correct array values are.", array, actualArray);
+		// set an array with large positive values
+		double[][] actualArray = DataUtilities.clone(array); // clone array
+		assertArrayEquals(
+				"createNumberArray failed the correct array values are { { 2425.0, 1285.0, 7697.0, 4845.0, 59415.0 }, { 24665.0, 1255.0, 798.0, 4232.0, 5000.0 } }; .",
+				array, actualArray); // assert that the clone function worked correctly
 	}
 
+	/**
+	 * This test will be testing the clone function when the 2D array contains small
+	 * negative values.
+	 */
 	@Test
 	public void cloneArrayOfSmallAndNegativeValues() {
-		double[][] array = { { -0.025}, { -000056.0 } };
-		double[][] actualArray = DataUtilities.clone(array);
-		assertArrayEquals("createNumberArray failed the correct array values are.", array, actualArray);
+		double[][] array = { { -0.025 }, { -000056.0 } }; // set an array with small negative values
+		double[][] actualArray = DataUtilities.clone(array); // clone array
+		assertArrayEquals("createNumberArray failed the correct array values are { { -0.025 }, { -000056.0 } }; .",
+				array, actualArray); // assert that the clone function worked correctly
 	}
+
 	// -----------------------------------------------------------------------------------------
 	// The following code was taken from the SENG438 Lab Document
 	// -----------------------------------------------------------------------------------------
