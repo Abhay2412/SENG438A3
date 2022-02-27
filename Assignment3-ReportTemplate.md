@@ -137,11 +137,11 @@ Text…
 
 ## Data Utilities
 ### Line
-
+![](media/DataUtilities_Line.png)
 ### Branch
-
+![](media/DataUtilities_Branch.png)
 ### Method
-
+![](media/DataUtilities_Method.png)
 
 ## Range
 ### Line
