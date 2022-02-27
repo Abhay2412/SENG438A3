@@ -157,8 +157,24 @@ Text…
 As a group, we decided to use pair testing and divided the two classes between each pair. All of the work was done remotely using Discord with each group member sharing their screens in the pairs that were formed. The methods were also divided to make it easier to complete the lab instead of doing it all in one large group. The work was divided as followed:
  
 #### Pair 1: Lauraine and Abhay - DataUtilities
-This pair developed a total of __ additional test cases:
- 
+This pair developed a total of 16 additional test cases:
+1. cumulativePercentageForIndexZeroSixteen()
+2. cumulativePercentageForIndexOneHundred()
+3. cumulativePercentageDataNullCheck()
+4. cumulativePercentageForIndexZeroSixteenPercentNullIncluded()
+5. calculateRowTotalNullChecking()
+6. calculateRowTotalWithNull()
+7. calculateColumnTotalNullChecking()
+8. calculateColumnTotalWithNull()
+9. testEqualityOfArrays_DifferentArrayLength()
+10. calculateColumnTotalNullData()
+11. calculateRowTotalNullData()
+12. cloneNullParameter()
+13. cloneEmptyArray()
+14. cloneNullDataInArray()
+15. cloneArrayOfBigAndPositiveValues()
+16. cloneArrayOfSmallAndNegativeValues()
+
 #### Pair 1: Alexis and Rachel - Range
 This pair developed a total of 23 additional test cases:
 1. constructorLowerBoundGreater() 
