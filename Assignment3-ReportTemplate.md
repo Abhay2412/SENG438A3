@@ -149,7 +149,7 @@ Text…
 ### Branch
 ![](media/RangeBranch93_1.png)
 ### Method
-![](media/RangeMethod91_3)
+![](media/RangeMethod91_3.png)
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 The primary coverage tool we used in this assignment was ECLEmma as it was preloaded with Eclipse making it an easier procedure to use instead of downloading other suggested tools in the lecture slides. ECLEmma also provided us with the coverage metrics we were exploring in the lectures as well; for example, method, line, branch coverage was easily distinguishable. Hence ECLEmma was created for a test suite coverage ease with the in-built coverage metrics. ECLEmma did not do one thing which was not able to analyze the condition coverage, which was a downside of this coverage tool, as it could have solidified to be it perfect tool from the understandings in the lecture. The metrics we chose as a group to report were method coverage(if the specific method is being called in the test suite), line coverage(total number of lines of code being covered by the test cases), and branch coverage(checking for the execution paths after decision statements covered by the test cases) this coverage tool was done instead of condition coverage which as mentioned before was not supported by ECLEmma. 
