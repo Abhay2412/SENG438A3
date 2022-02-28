@@ -207,9 +207,12 @@ This pair developed a total of 23 additional test cases:
 
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
-
-Text…
-
+ 
+It was somewhat difficult to fully understand how to navigate ECLEmma since we had never operated the software prior. We were unsure how to get the line and method coveraged to show as we initially only saw branch coverage. We resolved this uncertainty when we asked the TA how to navigate the software to change the coverage type. We found there to be some challenges when using the data flow graph to determine def-use sets, DU-pairs and paths. This concept of def-use sets and pairs was new to us, so we had to take some time to review the notes and find some examples online to ensure that we were calculating it correctly. As a result, we had a relatively slow start in the lab. But once we passed this section and moved onto the test development and coverage, it was more efficient. 
+ 
 # 10 Comments/feedback on the lab itself
+ 
+The lab assignment was overall more enjoyable for our group than the previous lab assignment. When we were working on this lab, we felt that we had a more solid understanding of JUnit testing and what kind of tests we would need to write. Using the ECLEmma tool was fairly straightforward and we didn’t need to do much extra research or waste time trying to understand how to use the program even though we initially had some difficulty navigating the coverage types. We found it really easy to understand what our tests covered and switch between the different coverage types. The one issue we had with the lab was that it was not obvious which types of coverage could be used instead of statement, branch, or condition. We spoke with a TA to ensure that we were allowed to make the replacements of line instead of statement, and condition instead of method. 
+ 
+Overall, this lab was worthwhile because it allowed us to understand how to make a proper test suite and ensure that an entire function could be covered by the tests. It allowed us to notice a pattern among the different types of tests we had to write, which in turn helped us write more unit tests in a shorter amount of time.
 
-Text…
