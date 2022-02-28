@@ -1024,7 +1024,77 @@ public class RangeTest {
 		assertEquals("The upper margin range will be 1.9", 1.9, testExpandRange.getUpperBound(), .000000001d);
 		// assertion that expected value matches the actual value (1)
 	}
-	
+
+	// -------- Range shift(Range base, double delta,boolean allowZeroCrossing)
+	// Tests ----------
+	/**
+	 * This test will be used to test what happens when a range is shifted by a
+	 * positive amount when allowZeroCrossing is true. We are only checking the
+	 * upper bound of the range.
+	 */
+	@Test
+	public void shiftByPositiveAllowZero() {
+		testRange1 = new Range(2, 6);
+		Range testShiftedRange = Range.shift(testRange1, 158, true);
+		assertEquals("The shifted value should be ", 164, testShiftedRange.getUpperBound(), .000000001d);
+	}
+
+	/**
+	 * This test will be used to test what happens when a range is shifted by a
+	 * positive amount when allowZeroCrossing is false and value is less than zero.
+	 * We are only checking the upper bound of the range.
+	 */
+	@Test
+	public void shiftWithNoZeroCrossingValueLessThanZero() {
+		testRange1 = new Range(-1, 6);
+		Range testShiftedRange = Range.shift(testRange1, 158, false);
+		assertEquals("The shifted value should be ", 164, testShiftedRange.getUpperBound(), .000000001d);
+	}
+
+	/**
+	 * This test will be used to test what happens when a range is shifted by a
+	 * positive amount when allowZeroCrossing is false and value is equal zero. We
+	 * are only checking the upper bound of the range.
+	 */
+	@Test
+	public void shiftWithNoZeroCrossingValueEqualZero() {
+		testRange1 = new Range(0, 6);
+		Range testShiftedRange = Range.shift(testRange1, 158, false);
+		assertEquals("The shifted value should be ", 164, testShiftedRange.getUpperBound(), .000000001d);
+	}
+
+	// -------- scale(Range base, double factor) Tests ----------
+	/**
+	 * This test will simulate scaling a range with a negative factor. This test
+	 * should throw an exception.
+	 */
+	@Test
+	public void scaleNegativeFactor() {
+		try {
+			testRange1 = new Range(0, 6);
+			Range testScale = Range.scale(testRange1, -1);
+			fail("This method should throw an exception!");
+			// creating a failure message for if scale does not throw an
+			// exception
+		} catch (Exception e) {
+			assertEquals("The exception thrown type is IllegalArgumentException", IllegalArgumentException.class,
+					e.getClass());
+			// catching the exception, asserting that an IllegalArgumentException was thrown
+		}
+	}
+
+	/**
+	 * This test will be used to test what happens when a range is scaled by a
+	 * positive factor with positive range. We are only checking the upper bound of
+	 * the range.
+	 */
+	@Test
+	public void scalePositiveRangePositiveFactor() {
+		testRange1 = new Range(0, 6);
+		Range testScale = Range.scale(testRange1, 2);
+		assertEquals("The shifted value should be ", 12, testScale.getUpperBound(), .000000001d);
+	}
+
 	// -----------------------------------------------------------------------------------------
 	// End of code by Alexis and Rachel
 	// -----------------------------------------------------------------------------------------
