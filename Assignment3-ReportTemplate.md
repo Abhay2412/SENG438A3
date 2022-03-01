@@ -112,6 +112,8 @@ With the addition of **cumulativePercentageForIndexZeroSixteen()**
  
 The test cases which are created were not explored before in assignment two as this method was complicated and required us to have access to the code, hence creating even some test cases increased our code coverage in the metrics used in this assignment. In specific, all of the metrics saw a significant increase due to the factor of not being covered by our test suite which was established in assignment two. Due to the unknown knowledge of what KeyedValues meant in assignment two, this assignment three reinforces our learning on this specific area of the code in the class. The percentage of the coverage which changed is noted down below the analysis on how these specific coverage metrics were affected with this addition of the test case in the test suite. 
  
+` clone(double[][] source) `
+ 
 With the addition of **cloneNullDataInArray()**
 - Branch: 43.8% to 52.1% (increased coverage by 8.3%)
 - Line: 45.0% to 55.0% (increased coverage by 10.0%)
