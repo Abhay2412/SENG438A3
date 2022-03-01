@@ -21,7 +21,9 @@ The main objective of this lab is to introduce the concepts of white box testing
 Methods = DataUtilities.calculateColumnTotal() and Range.combine()
  
 ### Range.combine()
- 
+
+![](media/Range_DataFlowGraph.png)
+
 __Def-path set:__
 - du(1, range1) = {[1], [1,3,4], [1,3,5], [1,3,5,6]}
 - du(1, range2) = {[1,2], [1,3,5], [1,3,5,6]}
@@ -46,6 +48,8 @@ CU = 10
 PU = 4
 
 ### DataUtilities.calculateColumnTotal() 
+ 
+![](media/DataUtilities_DataFlowGraph.png)
  
 __Def-path set:__
 - du(1, data) = {[1], [1,2,3], [1,2,3,4,5], [1,2,3,4,5,6,7,8,4,5]}
