@@ -40,6 +40,12 @@ __Def-pair set:__
 ![](media/rangetestTable1.png)
 ![](media/rangetestTable2.png)
 
+__DU-Pair coverage:__
+ 
+CU = 10
+PU = 4
+
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 ### Test plan:
