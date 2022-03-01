@@ -20,22 +20,22 @@ The main objective of this lab is to introduce the concepts of white box testing
 
 Methods = DataUtilities.calculateColumnTotal() and Range.combine()
  
-###Range.combine()
+### Range.combine()
  
 __Def-path set:__
-du(1, range1) = {[1], [1,3,4], [1,3,5], [1,3,5,6]}
-du(1, range2) = {[1,2], [1,3,5], [1,3,5,6]}
-du(5, l) = {[5,6,7]}
-du(6, u) = {[6,7]}
+- du(1, range1) = {[1], [1,3,4], [1,3,5], [1,3,5,6]}
+- du(1, range2) = {[1,2], [1,3,5], [1,3,5,6]}
+- du(5, l) = {[5,6,7]}
+- du(6, u) = {[6,7]}
  
 __Def-pair set:__
-du(1, 4, range1) = {[1,3,4]} 
-du(1, 6, range1) = {[1,3,5,6]}
-du(1, 3, range2) = {[1,3]}
-du(1, 2, range2) = {[1,2]}
-du(1, 6, range2) = {[1,3,5,6]}
-du(5, 7, l) = {[5, 6, 7]}
-du(6, 7, u) = {[6,7]}
+- du(1, 4, range1) = {[1,3,4]} 
+- du(1, 6, range1) = {[1,3,5,6]}
+- du(1, 3, range2) = {[1,3]}
+- du(1, 2, range2) = {[1,2]}
+- du(1, 6, range2) = {[1,3,5,6]}
+- du(5, 7, l) = {[5, 6, 7]}
+- du(6, 7, u) = {[6,7]}
 
 ![](media/rangetestTable1.png)
 ![](media/rangetestTable2.png)
