@@ -76,6 +76,11 @@ __Def-pair set:__
 ![](media/datautilitiestestTable1.png)
 ![](media/datautilitiestestTable2.png)
 
+__DU-Pair coverage:__
+ 
+CU = 8
+PU = 8
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 ### Test plan:
