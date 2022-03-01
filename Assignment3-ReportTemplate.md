@@ -69,6 +69,9 @@ __Def-pair set:__
 - du(5, 6, n) = {[5,6]}
 - du(5, 7, n) = {[5,6,7]}
 
+![](media/datautilitiestestTable1.png)
+![](media/datautilitiestestTable2.png)
+
 
 # 3 A detailed description of the testing strategy for the new unit test
 ### Test plan:
