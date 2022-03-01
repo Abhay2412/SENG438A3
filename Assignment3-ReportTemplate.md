@@ -14,7 +14,7 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-he main objective of this lab is to introduce the concepts of white box testing using the JUnit framework and using coverage tools that help us create a solid code coverage for our test suite. In addition, implementing white box testing verifies our unit tests at the unit testing level. The coverage tools used in the lab will also help us in identifying how much of the unit testing has been completed with our created tests and how much is left. White box testing enables us to go through the testing phase of a software development cycle more thoroughly and in-depth by testing all possible code paths. 
+The main objective of this lab is to introduce the concepts of white box testing using the JUnit framework and using coverage tools that help us create a solid code coverage for our test suite. In addition, implementing white box testing verifies our unit tests at the unit testing level. The coverage tools used in the lab will also help us in identifying how much of the unit testing has been completed with our created tests and how much is left. White box testing enables us to go through the testing phase of a software development cycle more thoroughly and in-depth by testing all possible code paths. 
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
