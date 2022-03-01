@@ -42,13 +42,14 @@ The five test cases we will be investigating are as follows:
  
 ## Pair 1: Lauraine and Abhay - DataUtilities
 ` getCumulativePercentages(KeyedValues data) `
-With the addition of cumulativePercentageForIndexZeroSixteen()
+
+With the addition of **cumulativePercentageForIndexZeroSixteen()**
 - Branch: 43.8% to 56.2% (increased the branch coverage by 12.4%)
 - Line: 45.0% to 62.5% (increased the line coverage by 17.5%)
 - Method: 50.0% to  60.0% (increased the method coverage by 10.0%)
 The test cases which are created were not explored before in the assignment two as this method was complicated and required us to have access to the code, hence creating even some test cases increased our code coverage in the metrics used in this assignment. In specific, all of the metrics saw a significant increase due to the factor of not being covered by our test suite which was established in assignment two. Due to the unknown knowledge of what KeyedValues meant in assignment two, this assignment three reinforces our learning on this specific area of the code in the class. The percentage of the coverage which changed is noted down below the analysis on how these specific coverage metrics were affected with this addition of the test case in the test suite. 
  
-With the addition of cloneNullDataInArray()
+With the addition of **cloneNullDataInArray()**
 - Branch: 43.8% to 52.1% (increased coverage by 8.3%)
 - Line: 45.0% to 55.0% (increased coverage by 10.0%)
 - Method: 50.0% to 60.0% (increased coverage by 10.0%)
@@ -56,14 +57,15 @@ Prior to the addition of this case, the method clone(double[][] source) was not 
  
 ## Pair 2: Alexis and Rachel - Range
 `combineIgnoringNaN(Range range1, Range range2)`
-With the addition of combineIgnoringNaN_Range1Null_Range2NotNull()
+
+With the addition of **combineIgnoringNaN_Range1Null_Range2NotNull()**
 - Branch: 48.6% to 54.2% (increased coverage by 5.6%)
 - Line: 56.3% to 60.2% (increased coverage by 3.9%)
 - Method: 69.6% to 78.3% (increased coverage by 8.7%)
 Prior to the additon of this test case, there were no test cases that tested the functionality for th combineIgnoringNaN(Range range1, Range range2) function. With the adtion of this test case, we now enter into the combineIgnoringNaN method, thus reflecting the increase in the method coverage. In addition, the test covers lines 241, 242, and 245 of the Range class, thus covering additional lines of code resulting in an increase in line coverage. Finally, since the test enters into the two if branch statements, branch coverage also is increased.
  
 `scale(Range base, double factor)`
-With the addition of scaleNegativeFactor()
+With the addition of **scaleNegativeFactor()**
 - Branch: 90.3% to 91.7% (increased coverage by 1.4%)
 - Line: 86.4% to 89.3% (increased coverage by 2.9%)
 - Method: 87.0% to 91.3% (increased coverage by 4.3%)
