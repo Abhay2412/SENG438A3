@@ -14,7 +14,7 @@ for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-The main objective of this lab is to introduce the concepts of white box testing using the framework JUnit and using coverage tools that help us create a solid test coverage for our test suite. Also, it verifies our unit tests mostly at the unit testing level. The coverage tools used in the lab also help us in identifying how much of the unit testing has been completed with our tests created and how much is left. White box testing enables you to go through the testing phase of a software development cycle more thoroughly with this strategy you are testing for all possible code paths. 
+he main objective of this lab is to introduce the concepts of white box testing using the JUnit framework and using coverage tools that help us create a solid code coverage for our test suite. In addition, implementing white box testing verifies our unit tests at the unit testing level. The coverage tools used in the lab will also help us in identifying how much of the unit testing has been completed with our created tests and how much is left. White box testing enables us to go through the testing phase of a software development cycle more thoroughly and in-depth by testing all possible code paths. 
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
@@ -72,11 +72,22 @@ Prior to the addition of this test case, there were no test cases that tested th
 With the addition of **scaleNegativeFactor()**
 - Branch: 90.3% to 91.7% (increased coverage by 1.4%)
 - Line: 86.4% to 89.3% (increased coverage by 2.9%)
-- Method: 87.0% to 91.3% (increased coverage by 4.3%)
+- Method: 87.0% to 91.3% (increased coverage by 4.3%) 
  
 Prior to the addition of this test case, there were no test cases that tested the functionality for the scale(Range base, double factor) function. With the addition of this test case, we now enter into the scale method, thus reflecting the increase in the method coverage. In addition, the test covers lines 409, 410, and 411 of the Range class, thus covering additional lines of code increasing line coverage. Finally, since the test enters into the if branch statement, branch coverage also is increased.
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
+ 
+## Final Coverage:
+**Range.java (Alexis, Rachel)**
+- Line = 91.3%
+- Branch = 93.1%
+- Method = 91.3%
+ 
+**DataUtilities.java (Abhay, Lauraine)**
+- Line = 98.8%
+- Branch = 91.7%
+- Method = 90.0%
 
 ## Data Utilities
 ### Line
