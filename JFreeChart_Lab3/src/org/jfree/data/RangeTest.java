@@ -1012,18 +1012,6 @@ public class RangeTest {
 		// assertion that expected value matches the actual value (0.7)
 	}
 
-	/**
-	 * This test will be testing the expand function where the double value lower is
-	 * greater than upper.
-	 */
-	@Test
-	public void expandLowerGreaterThanUpper_Upper() {
-		testRange1 = new Range(1, 2); // This is creating the range for testing purposes.
-		testExpandRange = Range.expand(testRange1, -0.9, -0.9); // Using the expand method to pass in the test
-		// range and the margin values
-		assertEquals("The upper margin range will be 1.9", 1.9, testExpandRange.getUpperBound(), .000000001d);
-		// assertion that expected value matches the actual value (1)
-	}
 
 	// -------- Range shift(Range base, double delta,boolean allowZeroCrossing)
 	// Tests ----------
