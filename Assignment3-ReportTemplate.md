@@ -168,12 +168,17 @@ Prior to the addition of this test case, there were no test cases that tested th
 ![](media/RangeMethod91_3.png)
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
-The primary coverage tool we used in this assignment was ECLEmma as it was preloaded with Eclipse, making it an easier procedure to use instead of downloading other suggested tools in the lecture slides. ECLEmma also provided us with the coverage metrics we were exploring in the lectures as well; for example, method, line, and branch coverage were easily distinguishable and covered the desired categories. Hence, ECLEmma was easy to use with the built-in coverage metrics. ECLEmma was not able to analyze the condition coverage or statement coverage, which was a downside of this coverage tool. As a result, the tool was sufficient for our needs, but it didn’t quite fit with the parameters of our lectures. The metrics we chose as a group to report were method coverage (if the specific method is being called in the test suite), line coverage (total number of lines of code being covered by the test cases), and branch coverage(checking for the execution paths after decision statements being covered by the test cases). Method coverage was used instead of condition coverage, and line coverage was used instead of statement coverage which as mentioned before are not supported by ECLEmma. 
-
+ 
+The primary coverage tool we used in this assignment was ECLEmma as it was preloaded with Eclipse, making it an easier program to use instead of downloading other suggested tools from the lecture slides. ECLEmma also provided us with three distinct coverage metrics similar to what we were exploring in the lectures as well; for example, method, line, and branch coverage were easily distinguishable and covered the desired code areas. Hence, ECLEmma was easy to use with the built-in coverage metrics. 
+ 
+On the flipside, ECLEmma was not able to analyze the condition coverage or statement coverage, which was a downside of this coverage tool. As a result, the tool was sufficient for our needs, but it didn’t quite fit with the parameters of our lectures. The metrics we chose as a group to report were method coverage (if the specific method is being called in the test suite), line coverage (total number of lines of code being covered by the test cases), and branch coverage(checking for the execution paths after decision statements being covered by the test cases). Method coverage was used instead of condition coverage, and line coverage was used instead of statement coverage. In addition, the software didn’t come with any instructions for use and it took a bit of time to understand exactly what was happening when running the coverage software for different java files.
+ 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
-Test generation is defined as creating test suites for identifying errors in the codebase; for this, we have learned two types so far in our lectures. Exploring requirements-based testing, which is using black-box testing as its foundation, means that we need to come up with the test cases without looking at the source code and hence no limitations exist in the test suite. It also ensures that test creation is targeted to check over whether the codebase is actually performing its desired functionality. A disadvantage for this type of testing could result in some missing edge cases as code access is restricted, forcing testers to think outside of the box to verify the test cases. An example could be that if the requirements for the code are unclear, it may lead testing to have important features of the codebase missed. Shifting over to coverage-based testing, it is defined as using the concepts of white-box testing methodologies to create a test suite. A primary advantage of using this form of test generation is that it can help achieve the 100% coverage metrics from the coverage tool that is being used, which ensures the source code is being analyzed completely. The test suite is also enhanced as unit tests are more suited to the codebase instead of unknown source code. Some flaws in creating this type of test are that it requires extensive knowledge about the functionality of the code and its purpose in the whole software program. With many tools out there being open-sourced, it becomes difficult knowing which one is the best for a given test suite. Finally, code coverage does not ensure that the critical sections of the code are being covered by the unit tests created in the suite.
-
-# 8 A discussion on how the team work/effort was divided and managed
+ 
+Test generation is defined as creating test suites for identifying errors in the codebase. For this, we have learned two types so far in our lectures: requirements-based testing and coverage-based testing. Exploring requirements-based testing, which is using black-box testing as its foundation, means that we need to come up with the test cases without looking at the source code so that no limitations exist in the test suite. In order to understand the system, only the code documentation is provided. Requirements-based testing also ensures that test creation is targeted to check whether or not the codebase is actually performing its desired functionality. A disadvantage for this type of testing could result in some missing edge cases as code access is restricted, forcing testers to think outside of the box to verify their test cases. An example could be that if the requirements for the code are unclear, it may lead the tests to exclude important features of the codebase. Shifting over to coverage-based testing, it is defined as using the concepts of white-box testing methodologies to create a test suite. A primary advantage of using this form of test generation is that it can help achieve 100% coverage metrics from the coverage tool being used, which ensures the source code is being analyzed completely. The test suite is also enhanced as unit tests are more suited to the codebase instead of unknown source code. Some flaws in creating this type of test are that it requires extensive knowledge about the functionality of the code under test and its purpose in the whole software program. In addition, since there are many open-sourced tools available online, it becomes difficult knowing which one is the best for a given test suite. Finally, code coverage does not ensure that the critical sections of the code are being covered by the unit tests created in the test suite because the software cannot tell which methods and sections are critical to the code’s functionality.
+ 
+# 8 A discussion on how the teamwork/effort was divided and managed
+ 
 As a group, we decided to use pair testing and divided the two classes between each pair. All of the work was done remotely using Discord with each group member sharing their screens in the pairs that were formed. The methods were also divided to make it easier to complete the lab instead of doing it all in one large group. The work was divided as followed:
  
 #### Pair 1: Lauraine and Abhay - DataUtilities
@@ -194,41 +199,45 @@ This pair developed a total of 16 additional test cases:
 14. cloneNullDataInArray()
 15. cloneArrayOfBigAndPositiveValues()
 16. cloneArrayOfSmallAndNegativeValues()
-
+ 
 #### Pair 1: Alexis and Rachel - Range
-This pair developed a total of 23 additional test cases:
+This pair developed a total of 28 additional test cases:
 1. constructorLowerBoundGreater() 
 2. containsValueWithinRange()
 3. containsValueOutsideRangeLower()
-4. containsValueOutsideRangeHigher() intersectsRangeIsTrue_SecondParamGreater() 
-5. intersectsRangeIsFalse_BothParamLess()
-6. intersectsRangeIsTrue_BothParamInsideRange()
-7. intersectsRangeIsFalse_BothParamGreater()
-8. intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() 
-9. constrainWithinRange() 
-10. constrainOutsideUpperRange()
-11. constrainOutsideLowerRange()
-12. constrainOutsideLowerRangeEqual()
-13. combineIgnoringNaN_Range1Null_Range2NotNull()
-14. combineIgnoringNaN_Range1Null_Range2NaN()
-15. combineIgnoringNaN_Range1Null_Range2Null() 
-16. combineIgnoringNaN_Range1NaN_Range2Null() 
-17. combineIgnoringNaN_Range1NotNull_Range2Null() 
-18. combineIgnoringNaN_Range1NotNull_Range2NotNull_NoNaN()
-19. combineIgnoringNaN_Range1NotNull_Range2NotNull_AllNaN()
-20. combineIgnoringNaN_NaNMinRange()
-21. minAndMaxD2_NaN() 
-22. expandLowerGreaterThanUpper_Lower()
-23. expandLowerGreaterThanUpper_Upper()
-
-
+4. containsValueOutsideRangeHigher()
+5.  intersectsRangeIsTrue_SecondParamGreater() 
+6. intersectsRangeIsFalse_BothParamLess()
+7. intersectsRangeIsTrue_BothParamInsideRange()
+8. intersectsRangeIsFalse_BothParamGreater()
+9. intersectsRangeIsFalse_B0LessThanUpperAndB1LessThanB0() 
+10. constrainWithinRange() 
+11. constrainOutsideUpperRange()
+12. constrainOutsideLowerRange()
+13. constrainOutsideLowerRangeEqual()
+14. combineIgnoringNaN_Range1Null_Range2NotNull()
+15. combineIgnoringNaN_Range1Null_Range2NaN()
+16. combineIgnoringNaN_Range1Null_Range2Null() 
+17. combineIgnoringNaN_Range1NaN_Range2Null() 
+18. combineIgnoringNaN_Range1NotNull_Range2Null() 
+19. combineIgnoringNaN_Range1NotNull_Range2NotNull_NoNaN()
+20. combineIgnoringNaN_Range1NotNull_Range2NotNull_AllNaN()
+21. combineIgnoringNaN_NaNMinRange()
+22. minAndMaxD2_NaN() 
+23. expandLowerGreaterThanUpper_Lower()
+24. shiftByPositiveAllowZero()
+25. shiftWithNoZeroCrossingValueLessThanZero()
+26. shiftWithNoZeroCrossingValueEqualZero()
+27. scaleNegativeFactor()
+28. scalePositiveRangePositiveFactor()
+ 
+ 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
  
-It was somewhat difficult to fully understand how to navigate ECLEmma since we had never operated the software prior. We were unsure how to get the line and method coveraged to show as we initially only saw branch coverage. We resolved this uncertainty when we asked the TA how to navigate the software to change the coverage type. We found there to be some challenges when using the data flow graph to determine def-use sets, DU-pairs and paths. This concept of def-use sets and pairs was new to us, so we had to take some time to review the notes and find some examples online to ensure that we were calculating it correctly. As a result, we had a relatively slow start in the lab. But once we passed this section and moved onto the test development and coverage, it was more efficient. 
+It was somewhat difficult to fully understand how to navigate ECLEmma since we had never operated the software prior to the assignment. We were unsure how to get the line and method coverages to show as we initially only saw branch coverage. We resolved this uncertainty when we asked the TA how to navigate the software to change the coverage type. We also found there to be some challenges when using the data flow graph to determine def-use sets, DU-pairs and DU-paths. The concept of def-use sets and pairs was new to us, so we had to take some time to review the notes and find examples online to ensure that we were calculating each of them correctly. As a result, we had a relatively slow start in the lab but once we passed this section and moved on to the test development and coverage, it was more efficient.
  
 # 10 Comments/feedback on the lab itself
  
-The lab assignment was overall more enjoyable for our group than the previous lab assignment. When we were working on this lab, we felt that we had a more solid understanding of JUnit testing and what kind of tests we would need to write. Using the ECLEmma tool was fairly straightforward and we didn’t need to do much extra research or waste time trying to understand how to use the program even though we initially had some difficulty navigating the coverage types. We found it really easy to understand what our tests covered and switch between the different coverage types. The one issue we had with the lab was that it was not obvious which types of coverage could be used instead of statement, branch, or condition. We spoke with a TA to ensure that we were allowed to make the replacements of line instead of statement, and condition instead of method. 
+The lab assignment was overall more enjoyable for our group than the previous lab assignment. When we were working on this lab, we felt that we had a more solid understanding of JUnit testing and what kind of tests we would need to write. Using the ECLEmma tool was fairly straightforward and we didn’t need to do much extra research or waste time trying to understand how to use the program even though we initially had some difficulty navigating the coverage types. We found it really easy to understand what our tests covered and switch between the different coverage types. The one issue we had with the lab was that it was not obvious which types of coverage could be used instead of statement, branch, or condition. We spoke with a TA to ensure that we were allowed to make the replacements of the line instead of the statement, and condition instead of method. 
  
-Overall, this lab was worthwhile because it allowed us to understand how to make a proper test suite and ensure that an entire function could be covered by the tests. It allowed us to notice a pattern among the different types of tests we had to write, which in turn helped us write more unit tests in a shorter amount of time.
-
+Overall, this lab was worthwhile because it allowed us to understand how to make a proper test suite and ensure that an entire function could be covered by the tests. It allowed us to notice a pattern among the different types of tests we had to write, which in turn helped us write more unit tests in a shorter amount of time. 
