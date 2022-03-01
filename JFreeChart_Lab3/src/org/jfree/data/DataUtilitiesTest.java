@@ -1219,7 +1219,7 @@ public class DataUtilitiesTest {
 	 */
 	@Test
 	public void cloneArrayOfSmallAndNegativeValues() {
-		double[][] array = { { -0.025 }, { -000056.0 } }; // set an array with small negative values
+		double[][] array = { { -0.025 }, { -0.000560 } }; // set an array with small negative values
 		double[][] actualArray = DataUtilities.clone(array); // clone array
 		assertArrayEquals("createNumberArray failed the correct array values are { { -0.025 }, { -000056.0 } }; .",
 				array, actualArray); // assert that the clone function worked correctly
